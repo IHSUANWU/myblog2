@@ -2582,7 +2582,7 @@ button:disabled,
   -moz-flex-direction: row;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   margin: 0 0 2em -2em;
 }
@@ -2629,13 +2629,9 @@ button:disabled,
   -moz-flex-direction: column;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
-  flex-direction: column;
-  width: calc(100% / 3);
+  flex-direction: row;
+  /* width: calc(100% / 3); */
   padding-left: 2em;
-}
-
-.thumbnails > div > :last-child {
-  margin-bottom: 0;
 }
 
 @media screen and (max-width: 1280px) {
