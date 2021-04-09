@@ -77,15 +77,15 @@
                   <div class="image-parent">
                     <img
                       data-toggle="popover"
-                      data-full="https://www.ihsuanwu.com/images/thumbs/surf_2021-03-07-1.JPG"
+                      data-full="/images/thumbs/surf_2021-03-07-1.JPG"
                       class="img-thumbnail"
-                      src="https://www.ihsuanwu.com/images/thumbs/surf_2021-03-07-1.JPG"
+                      src="/images/thumbs/surf_2021-03-07-1.JPG"
                     />
                     <img
                       data-toggle="popover"
-                      data-full="https://www.ihsuanwu.com/images/thumbs/surf_2021-03-07-1.JPG"
+                      data-full="/images/fulls/surf_2021-03-07-2.JPG.JPG"
                       class="img-thumbnail"
-                      src="https://www.ihsuanwu.com/images/thumbs/surf_2021-03-07-1.JPG"
+                      src="/images/thumbs/surf_2021-03-07-2.JPG"
                     />
                     <img
                       data-toggle="popover"
@@ -199,22 +199,8 @@
     </div>
 
     <!-- Scripts -->
-    <script>
-      $(function () {
-        // Enables popover
-        $("[data-toggle=popover]").popover({
-          container: "body",
-          html: true,
-          placement: "auto",
-          trigger: "hover",
-          content: function () {
-            // get the url for the full size img
-            var url = $(this).data("full");
-            return '<img src="' + url + '">';
-          },
-        });
-      });
-    </script>
+
+    <script src="surfing/popover.js"></script>
     <script src="surfing/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.poptrox.min.js"></script>
