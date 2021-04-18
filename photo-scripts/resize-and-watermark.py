@@ -6,6 +6,13 @@
 import argparse
 import os
 import subprocess
+import sys
+
+
+def check_version():
+    ver = sys.version_info
+    if ver.major < 3 or ver.minor < 9:
+        sys.exit('Requires Python >= 3.9')
 
 
 def parse_args():
@@ -16,6 +23,7 @@ def parse_args():
 
 
 def main():
+    check_version()
     args = parse_args()
     input_dir = args.input_dir
     output_dir = input_dir + '_resized'
