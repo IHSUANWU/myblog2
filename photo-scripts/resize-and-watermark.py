@@ -9,6 +9,7 @@ import subprocess
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('input_dir')
+    parser.add_argument('--skip-watermark', action='store_true')
     return parser.parse_args()
 
 
@@ -27,9 +28,10 @@ def main():
         output_path = os.path.join(output_dir, f)
         print(input_path)
         resize_photo(input_path, output_path)
-        label = f'{os.path.basename(input_dir)}_{i + 1}'
-        label_photo(output_path, label)
-        watermark_photo(output_path)
+        if not args.skip_watermark:
+            label = f'{os.path.basename(input_dir)}_{i + 1}'
+            label_photo(output_path, label)
+            watermark_photo(output_path)
 
 
 def resize_photo(input_path, output_path):
