@@ -1,3 +1,5 @@
+# This script relies on the `convert` and `composite` commands from ImageMagick:
+#   https://imagemagick.org/script/download.php#macosx
 # Watermark file was created with:
 # > convert -size 500x250 xc:none  -pointsize 35 -kerning 1 -gravity center -fill black -annotate 330x330+0+0 "ihsuanwu.com/surf" -fill white -annotate 330x330+2+2  "ihsuanwu.com/surf" watermark.png
 
