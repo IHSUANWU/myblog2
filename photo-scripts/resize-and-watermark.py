@@ -18,7 +18,6 @@ def check_version():
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('input_dir')
-    parser.add_argument('--skip-watermark', action='store_true')
     return parser.parse_args()
 
 
@@ -26,26 +25,35 @@ def main():
     check_version()
     args = parse_args()
     input_dir = args.input_dir
-    output_dir = input_dir + '_resized'
-    os.makedirs(output_dir, exist_ok=True)
 
     photo_files = [f for f in os.listdir(input_dir) if f.lower().endswith('.jpg')]
     photo_files.sort()
     print(f'Found {len(photo_files)} photos in {input_dir}')
 
+    resize_photos(photo_files, input_dir, preview=False)
+    resize_photos(photo_files, input_dir, preview=True)
+
+
+def resize_photos(photo_files, input_dir, preview):
+    folder_ext = '_preview' if preview else '_watermark'
+    output_dir = input_dir + folder_ext
+    os.makedirs(output_dir, exist_ok=True)
+    print(f'Generating photos into {output_dir}')
+
     for i, f in enumerate(photo_files):
         input_path = os.path.join(input_dir, f)
         output_path = os.path.join(output_dir, f)
         print(input_path)
-        resize_photo(input_path, output_path)
-        if not args.skip_watermark:
+        resize_photo(input_path, output_path, preview)
+        if not preview:
             label = f'{os.path.basename(input_dir)}_{i + 1}'
             label_photo(output_path, label)
             watermark_photo(output_path)
 
 
-def resize_photo(input_path, output_path):
-    cmd = ['convert', input_path, '-resize', '20%', output_path]
+def resize_photo(input_path, output_path, preview):
+    scale_perc = '12%' if preview else '20%'
+    cmd = ['convert', input_path, '-resize', scale_perc, output_path]
     subprocess.run(cmd)
 
 
